@@ -2,6 +2,7 @@ use yew::prelude::*;
 
 enum Msg {
     AddOne,
+    RemoveOne,
 }
 
 struct Model {
@@ -23,6 +24,10 @@ impl Component for Model {
             Msg::AddOne => {
                 self.value += 1;
                 true
+            },
+            Msg::RemoveOne => {
+                self.value -= 1;
+                true
             }
         }
     }
@@ -31,7 +36,8 @@ impl Component for Model {
         let link = ctx.link();
         html! {
             <div>
-                <button onclick={link.callback(|_| Msg::AddOne)}>{ "+1" }</button>
+                <button onclick={link.callback(|_| Msg::AddOne)}>{ "Add 1" }</button>
+                <button onclick={link.callback(|_| Msg::RemoveOne)}>{ "Remove 1" }</button>
                 <p>{ self.value }</p>
             </div>
         }
