@@ -35,10 +35,12 @@ impl Component for Model {
     fn view(&self, ctx: &Context<Self>) -> Html {
         let link = ctx.link();
         html! {
-            <div>
-                <button onclick={link.callback(|_| Msg::AddOne)}>{ "Add 1" }</button>
-                <button onclick={link.callback(|_| Msg::RemoveOne)}>{ "Remove 1" }</button>
-                <p>{ self.value }</p>
+            <div class="main">
+                <div class="card">
+                    <button onclick={link.callback(|_| Msg::AddOne)}>{ "Add 1" }</button>
+                    <button onclick={link.callback(|_| Msg::RemoveOne)}>{ "Remove 1" }</button>
+                    <p>{ self.value }</p>
+                </div>
             </div>
         }
     }
