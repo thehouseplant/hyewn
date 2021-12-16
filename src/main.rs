@@ -1,12 +1,39 @@
 use yew::prelude::*;
+use yew_router::prelude::*;
 
-enum Msg {
-    AddOne,
-    RemoveOne,
+mod pages;
+use pages::{
+    ask::Ask,
+    home::Home,
+    jobs::Jobs,
+    new::New,
+    show::Show,
+    top::Top,
+};
+use yew::html::Scope;
+
+#[derive(Routable, PartialEq, Clone, Debug)]
+pub enum Route {
+    #[at("/")]
+    Home,
+    #[at("/top")]
+    Top,
+    #[at("/new")]
+    New,
+    #[at("/show")]
+    Show,
+    #[at("/ask")]
+    Ask,
+    #[at("/jobs")]
+    Jobs,
+}
+
+pub enum Msg {
+    ToggleNavbar,
 }
 
 struct Model {
-    value: i64,
+    navbar_active: bool,
 }
 
 impl Component for Model {
@@ -15,33 +42,97 @@ impl Component for Model {
 
     fn create(_ctx: &Context<Self>) -> Self {
         Self {
-            value: 0,
+            navbar_active: false,
         }
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
-            Msg::AddOne => {
-                self.value += 1;
-                true
-            },
-            Msg::RemoveOne => {
-                self.value -= 1;
+            Msg::ToggleNavbar => {
+                self.navbar_active = !self.navbar_active;
                 true
             }
         }
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let link = ctx.link();
         html! {
-            <div class="main">
-                <div class="card">
-                    <button onclick={link.callback(|_| Msg::AddOne)}>{ "Add 1" }</button>
-                    <button onclick={link.callback(|_| Msg::RemoveOne)}>{ "Remove 1" }</button>
-                    <p>{ self.value }</p>
-                </div>
-            </div>
+            <BrowserRouter>
+                { self.view_nav(ctx.link()) }
+
+                <main class="container">
+                    <Switch<Route> render={Switch::render(switch)} />
+                </main>
+            </BrowserRouter>
+        }
+    }
+}
+
+impl Model {
+    fn view_nav(&self, link: &Scope<Self>) -> Html {
+        html! {
+            <nav class="container-fluid">
+                <ul>
+                    <li>
+                        <strong>{ "HEWN" }</strong>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <Link<Route> to={Route::Home}>
+                            { "Home" }
+                        </Link<Route>>
+                    </li>
+                    <li>
+                        <Link<Route> to={Route::Top}>
+                            { "top" }
+                        </Link<Route>>
+                    </li>
+                    <li>
+                        <Link<Route> to={Route::New}>
+                            { "new" }
+                        </Link<Route>>
+                    </li>
+                    <li>
+                        <Link<Route> to={Route::Show}>
+                            { "show" }
+                        </Link<Route>>
+                    </li>
+                    <li>
+                        <Link<Route> to={Route::Ask}>
+                            { "ask" }
+                        </Link<Route>>
+                    </li>
+                    <li>
+                        <Link<Route> to={Route::Jobs}>
+                            { "jobs" }
+                        </Link<Route>>
+                    </li>
+                </ul>
+            </nav>
+        }
+    }
+}
+
+fn switch(routes: &Route) -> Html {
+    match routes.clone() {
+        Route::Ask => {
+            html! { <Ask /> }
+        }
+        Route::Home => {
+            html! { <Home /> }
+        }
+        Route::Jobs => {
+            html! { <Jobs /> }
+        }
+        Route::New => {
+            html! { <New /> }
+        }
+        Route::Show => {
+            html! { <Show /> }
+        }
+        Route::Top => {
+            html! { <Top /> }
         }
     }
 }
