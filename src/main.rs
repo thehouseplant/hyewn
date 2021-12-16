@@ -7,6 +7,7 @@ use pages::{
     home::Home,
     jobs::Jobs,
     new::New,
+    page_not_found::PageNotFound,
     show::Show,
     top::Top,
 };
@@ -26,6 +27,9 @@ pub enum Route {
     Ask,
     #[at("/jobs")]
     Jobs,
+    #[not_found]
+    #[at("/404")]
+    NotFound,
 }
 
 pub enum Msg {
@@ -133,6 +137,9 @@ fn switch(routes: &Route) -> Html {
         }
         Route::Top => {
             html! { <Top /> }
+        }
+        Route::NotFound => {
+            html! { <PageNotFound /> }
         }
     }
 }
