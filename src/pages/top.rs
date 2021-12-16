@@ -12,10 +12,7 @@ impl Component for Top {
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
-            <article>
-                <h1>{ "Top" }</h1>
-                
-            </article>
+            <h1>{ "Top" }</h1>
         }
     }
 }

@@ -4,7 +4,6 @@ use yew_router::prelude::*;
 mod pages;
 use pages::{
     ask::Ask,
-    home::Home,
     jobs::Jobs,
     new::New,
     page_not_found::PageNotFound,
@@ -15,8 +14,6 @@ use pages::{
 #[derive(Routable, PartialEq, Clone, Debug)]
 pub enum Route {
     #[at("/")]
-    Home,
-    #[at("/top")]
     Top,
     #[at("/new")]
     New,
@@ -51,11 +48,6 @@ impl Component for Model {
                         </li>
                     </ul>
                     <ul>
-                        <li>
-                            <Link<Route> to={Route::Home}>
-                                { "Home" }
-                            </Link<Route>>
-                        </li>
                         <li>
                             <Link<Route> to={Route::Top}>
                                 { "top" }
@@ -105,9 +97,6 @@ fn switch(routes: &Route) -> Html {
     match routes.clone() {
         Route::Ask => {
             html! { <Ask /> }
-        }
-        Route::Home => {
-            html! { <Home /> }
         }
         Route::Jobs => {
             html! { <Jobs /> }
