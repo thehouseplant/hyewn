@@ -11,7 +11,6 @@ use pages::{
     show::Show,
     top::Top,
 };
-use yew::html::Scope;
 
 #[derive(Routable, PartialEq, Clone, Debug)]
 pub enum Route {
@@ -32,37 +31,58 @@ pub enum Route {
     NotFound,
 }
 
-pub enum Msg {
-    ToggleNavbar,
-}
-
-struct Model {
-    navbar_active: bool,
-}
+struct Model;
 
 impl Component for Model {
-    type Message = Msg;
+    type Message = ();
     type Properties = ();
 
     fn create(_ctx: &Context<Self>) -> Self {
-        Self {
-            navbar_active: false,
-        }
+        Self
     }
 
-    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        match msg {
-            Msg::ToggleNavbar => {
-                self.navbar_active = !self.navbar_active;
-                true
-            }
-        }
-    }
-
-    fn view(&self, ctx: &Context<Self>) -> Html {
+    fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <BrowserRouter>
-                { self.view_nav(ctx.link()) }
+                <nav class="container-fluid">
+                    <ul>
+                        <li>
+                            <strong>{ "HEWN" }</strong>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <Link<Route> to={Route::Home}>
+                                { "Home" }
+                            </Link<Route>>
+                        </li>
+                        <li>
+                            <Link<Route> to={Route::Top}>
+                                { "top" }
+                            </Link<Route>>
+                        </li>
+                        <li>
+                            <Link<Route> to={Route::New}>
+                                { "new" }
+                            </Link<Route>>
+                        </li>
+                        <li>
+                            <Link<Route> to={Route::Show}>
+                                { "show" }
+                            </Link<Route>>
+                        </li>
+                        <li>
+                            <Link<Route> to={Route::Ask}>
+                                { "ask" }
+                            </Link<Route>>
+                        </li>
+                        <li>
+                            <Link<Route> to={Route::Jobs}>
+                                { "jobs" }
+                            </Link<Route>>
+                        </li>
+                    </ul>
+                </nav>
 
                 <main class="container">
                     <Switch<Route> render={Switch::render(switch)} />
@@ -77,52 +97,6 @@ impl Component for Model {
                     </small>
                 </footer>
             </BrowserRouter>
-        }
-    }
-}
-
-impl Model {
-    fn view_nav(&self, link: &Scope<Self>) -> Html {
-        html! {
-            <nav class="container-fluid">
-                <ul>
-                    <li>
-                        <strong>{ "HEWN" }</strong>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <Link<Route> to={Route::Home}>
-                            { "Home" }
-                        </Link<Route>>
-                    </li>
-                    <li>
-                        <Link<Route> to={Route::Top}>
-                            { "top" }
-                        </Link<Route>>
-                    </li>
-                    <li>
-                        <Link<Route> to={Route::New}>
-                            { "new" }
-                        </Link<Route>>
-                    </li>
-                    <li>
-                        <Link<Route> to={Route::Show}>
-                            { "show" }
-                        </Link<Route>>
-                    </li>
-                    <li>
-                        <Link<Route> to={Route::Ask}>
-                            { "ask" }
-                        </Link<Route>>
-                    </li>
-                    <li>
-                        <Link<Route> to={Route::Jobs}>
-                            { "jobs" }
-                        </Link<Route>>
-                    </li>
-                </ul>
-            </nav>
         }
     }
 }
