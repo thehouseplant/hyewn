@@ -1,6 +1,11 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
+mod components;
+use components::{
+    header::Header,
+};
+
 mod pages;
 use pages::{
     ask::Ask,
@@ -41,40 +46,7 @@ impl Component for Model {
     fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <BrowserRouter>
-                <nav class="container-fluid">
-                    <ul>
-                        <li>
-                            <strong>{ "HEWN" }</strong>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <Link<Route> to={Route::Top}>
-                                { "top" }
-                            </Link<Route>>
-                        </li>
-                        <li>
-                            <Link<Route> to={Route::New}>
-                                { "new" }
-                            </Link<Route>>
-                        </li>
-                        <li>
-                            <Link<Route> to={Route::Show}>
-                                { "show" }
-                            </Link<Route>>
-                        </li>
-                        <li>
-                            <Link<Route> to={Route::Ask}>
-                                { "ask" }
-                            </Link<Route>>
-                        </li>
-                        <li>
-                            <Link<Route> to={Route::Jobs}>
-                                { "jobs" }
-                            </Link<Route>>
-                        </li>
-                    </ul>
-                </nav>
+                <Header />
 
                 <main class="container">
                     <Switch<Route> render={Switch::render(switch)} />
