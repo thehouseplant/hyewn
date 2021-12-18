@@ -81,3 +81,13 @@ pub struct Story {
     pub post_type: String,
     pub url: String,
 }
+
+#[derive(Deserialize)]
+pub struct User {
+    pub about: String,
+    pub created: usize,
+    pub delay: usize,
+    pub id: String,
+    pub karma: usize,
+    pub submitted: Vec<Post>,
+}
