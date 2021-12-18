@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::Route;
+use crate::util::routes::{Routes};
 
 #[function_component(Header)]
 pub fn header() -> Html {
@@ -14,29 +14,29 @@ pub fn header() -> Html {
             </ul>
             <ul>
                 <li>
-                    <Link<Route> to={Route::Top}>
+                    <Link<Routes> to={Routes::Top}>
                         { "top" }
-                    </Link<Route>>
+                    </Link<Routes>>
                 </li>
                 <li>
-                    <Link<Route> to={Route::New}>
+                    <Link<Routes> to={Routes::New}>
                         { "new" }
-                    </Link<Route>>
+                    </Link<Routes>>
                 </li>
                 <li>
-                    <Link<Route> to={Route::Show}>
+                    <Link<Routes> to={Routes::Show}>
                         { "show" }
-                    </Link<Route>>
+                    </Link<Routes>>
                 </li>
                 <li>
-                    <Link<Route> to={Route::Ask}>
+                    <Link<Routes> to={Routes::Ask}>
                         { "ask" }
-                    </Link<Route>>
+                    </Link<Routes>>
                 </li>
                 <li>
-                    <Link<Route> to={Route::Jobs}>
+                    <Link<Routes> to={Routes::Jobs}>
                         { "jobs" }
-                    </Link<Route>>
+                    </Link<Routes>>
                 </li>
             </ul>
         </nav>
