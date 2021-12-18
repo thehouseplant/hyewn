@@ -5,5 +5,6 @@ authors = ["thehouseplant <sean.collins@outlook.com>"]
 edition = "2018"
 
 [dependencies]
+serde = { version = "1.0", features = ["derive"] }
 yew = "0.19"
 yew-router = "0.16"
