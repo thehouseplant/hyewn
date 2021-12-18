@@ -78,13 +78,20 @@ impl Component for Top {
         let posts = posts.iter().map(|post| html! {
             <p>
                 <strong>
-                    {format!("{}", post.title)}
+                    <a href={format!("{}", post.url)}>
+                        {format!("{}", post.title)}
+                    </a>
                 </strong>
                 <br />
                 <small>
-                    {format!("{} points by {}", post.score, post.by)}
+                    {format!("{} points by ", post.score)}
+                    <a href={format!("/user/{}", post.by)}>
+                        {format!("{}", post.by)}
+                    </a>
                     { " | " }
-                    {format!("{} comments", post.descendants)}
+                    <a href={format!("/item/{}", post.id)}>
+                        {format!("{} comments", post.descendants)}
+                    </a>
                 </small>
             </p>
         }).collect::<Html>();
