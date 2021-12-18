@@ -17,6 +17,8 @@ use pages::{
     top::Top,
 };
 
+mod util;
+
 #[derive(Routable, PartialEq, Clone, Debug)]
 pub enum Route {
     #[at("/")]

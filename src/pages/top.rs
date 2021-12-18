@@ -1,17 +1,8 @@
 use yew::prelude::*;
 
-pub struct Top;
+use crate::util::{models::Post};
 
-struct Post {
-    by: String,
-    descendants: usize,
-    id: usize,
-    score: usize,
-    time: usize,
-    title: String,
-    post_type: String,
-    url: String,
-}
+pub struct Top;
 
 impl Component for Top {
     type Message = ();
