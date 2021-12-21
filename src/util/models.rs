@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Ask {
     pub by: String,
     pub descendants: usize,
@@ -12,7 +12,7 @@ pub struct Ask {
     pub post_type: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Comment {
     pub by: String,
     pub id: usize,
@@ -22,7 +22,7 @@ pub struct Comment {
     pub post_type: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Job {
     pub by: String,
     pub id: usize,
@@ -34,7 +34,7 @@ pub struct Job {
     pub url: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Poll {
     pub by: String,
     pub descendants: usize,
@@ -47,7 +47,7 @@ pub struct Poll {
     pub post_type: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PollPart {
     pub by: String,
     pub id: usize,
@@ -58,7 +58,7 @@ pub struct PollPart {
     pub post_type: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Post {
     pub by: String,
     pub descendants: usize,
@@ -70,7 +70,7 @@ pub struct Post {
     pub url: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Story {
     pub by: String,
     pub descendants: usize,
@@ -82,7 +82,7 @@ pub struct Story {
     pub url: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct User {
     pub about: String,
     pub created: usize,
