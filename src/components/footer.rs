@@ -8,7 +8,7 @@ pub fn footer() -> Html {
                 { "Built with " }<a href="https://www.rust-lang.org/">{ "Rust" }</a> 
                 { " and " }<a href="https://yew.rs/">{ "Yew" }</a>
                 { " • Styles by "}<a href="https://picocss.com/">{ "Pico" }</a>
-                { " • " }<a href="https://github.com/thehouseplant/hewn">{ "Source" }</a>
+                { " • " }<a href="https://github.com/thehouseplant/hyewn">{ "Source" }</a>
             </small>
         </footer>
     }

@@ -1,6 +1,6 @@
-# HEWN
+# hyewn
 
-HEWN - A Hacker News clone written in Rust, utilizing the Yew WASM framework
+hyewn - A Hacker News clone written in Rust, Yew and Trunk
 
 ## Requirements
 

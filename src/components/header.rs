@@ -9,7 +9,7 @@ pub fn header() -> Html {
         <nav class="container-fluid">
             <ul>
                 <li>
-                    <strong>{ "HEWN" }</strong>
+                    <strong>{ "hyewn" }</strong>
                 </li>
             </ul>
             <ul>
