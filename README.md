@@ -1,6 +1,6 @@
 # hyewn
 
-hyewn - A Hacker News clone written in Rust, Yew and Trunk
+hyewn - A Hacker News clone written in [Rust](https://www.rust-lang.org/), utilizing [Yew](https://yew.rs/) and [Trunk](https://trunkrs.dev/)
 
 ## Requirements
 
