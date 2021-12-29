@@ -1,9 +1,9 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-mod components;
-mod pages;
-mod util;
+pub mod components;
+pub mod pages;
+pub mod util;
 
 use components::{
     footer::Footer,
@@ -13,6 +13,8 @@ use components::{
 use util::routes::{
     Routes, switch
 };
+
+const API_URL: &str = "https://hacker-news.firebaseio.com/v0";
 
 struct Model;
 
