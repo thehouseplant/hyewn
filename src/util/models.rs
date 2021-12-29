@@ -1,5 +1,12 @@
 use serde::{Deserialize, Serialize};
 
+#[derive(Deserialize)]
+pub enum Status {
+    Success,
+    Error,
+    Unknown,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Ask {
     pub by: String,
@@ -83,7 +90,7 @@ pub struct Story {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct User {
+pub struct IUser {
     pub about: String,
     pub created: usize,
     pub delay: usize,
