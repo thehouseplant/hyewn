@@ -1,9 +1,41 @@
+use gloo_net::http::Request;
+use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 use crate::util::{models::Post};
 
 #[function_component(Top)]
 pub fn top() -> Html {
+    let data = use_state(|| None);
+
+    // Request https://api.hackerwebapp.com/news
+    {
+        let data = data.clone();
+        use_effect(move || {
+            if data.is_none() {
+                spawn_local(async move {
+                    let resp = Request::get("https://api.hackerwebapp.com/news").send().await.unwrap();
+                    let result = {
+                        if !resp.ok() {
+                            Err(format!(
+                                "Error fetching data {} ({})",
+                                resp.status(),
+                                resp.status_text()
+                            ))
+                        } else {
+                            resp.text().await.map_err(|err| err.to_string())
+                        }
+                    };
+                    data.set(Some(result));
+                });
+            }
+
+            || {}
+        });
+    }
+
+    // Mock top news posts
     let posts = vec![
         Post {
             by: "hasheddan".to_string(),
