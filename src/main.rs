@@ -16,31 +16,21 @@ use util::routes::{
 
 const API_URL: &str = "https://hacker-news.firebaseio.com/v0";
 
-struct Model;
+#[function_component(App)]
+fn app() -> Html {
+    html! {
+        <BrowserRouter>
+            <Header />
 
-impl Component for Model {
-    type Message = ();
-    type Properties = ();
+            <main class="container">
+                <Switch<Routes> render={Switch::render(switch)} />
+            </main>
 
-    fn create(_ctx: &Context<Self>) -> Self {
-        Self
-    }
-
-    fn view(&self, _ctx: &Context<Self>) -> Html {
-        html! {
-            <BrowserRouter>
-                <Header />
-
-                <main class="container">
-                    <Switch<Routes> render={Switch::render(switch)} />
-                </main>
-
-                <Footer />
-            </BrowserRouter>
-        }
+            <Footer />
+        </BrowserRouter>
     }
 }
 
 fn main() {
-    yew::start_app::<Model>();
+    yew::start_app::<App>();
 }
